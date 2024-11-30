@@ -1,50 +1,92 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Haskill_project</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Haskill_project.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductCart</title>
+    <link rel="stylesheet" href="~/css/management.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Haskill_project</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Product<span>Cart</span></div>
+            <ul class="menu">
+                <li><a href="#">Начало</a></li>
+                <li><a href="#">Въпроси</a></li>
+                <li><a href="#">Клиенти</a></li>
+                <li><a href="#">Контакти</a></li>
+            </ul>
+            <a href="#" class="contact-btn">Регистрирай се</a>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Haskill_project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <main class="main-content">
+        @RenderBody()
+        <section class="hero">
+            <div class="hero-text">
+                <div class="changing-text-container">
+                    <h1>
+                        ProductCart, ново поколение софтуер за управление на <span id="dynamic-word">Заведения</span>
+                    </h1>
+
+                </div>
+
+                <div class="buttons">
+                    <a href="#" class="btn-primary">Свържи се с нас</a>
+                </div>
+            </div>
+            <div class="hero-images">
+                <img src="Dashboard.png" alt="Dashboard preview" class="dashboard">
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Management Home</title>
+    <link rel="stylesheet" href="management.css">
+</head>
+<body>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Ключови функционалности</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="bar.jpg" alt="Барове">
+                <h3>Барове</h3>
+                <p>Ефективно управление на запаси, поръчки и обслужване в баровете.</p>
+            </div>
+            <div class="card">
+                <img src="disco.jpg" alt="Дискотеки">
+                <h3>Дискотеки</h3>
+                <p>Следете продажбите и организирайте събития лесно.</p>
+            </div>
+            <div class="card">
+                <img src="restaurant.jpg" alt="Ресторанти">
+                <h3>Ресторанти</h3>
+                <p>Модернизирайте менюто и оптимизирайте процесите на работа.</p>
+            </div>
+            <div class="card">
+                <img src="coffee.jpg" alt="Кафенета">
+                <h3>Кафенета</h3>
+                <p>Изградете лоялност с персонализирани оферти за клиентите.</p>
+            </div>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ProductCart | Всички права запазени.</p>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="~/js/site.js"></script>
 </body>
 </html>
