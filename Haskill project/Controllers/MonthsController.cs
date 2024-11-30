@@ -54,11 +54,21 @@ namespace Haskill_project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Gains,Losses")] Month month)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Month month)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(month);
+                List<Food> list = _context.Food.Where(x => x.Quantity > 0).ToList();
+                foreach(var prod in list)
+                {
+                    prod.MonthId = month.Id;
+                    prod.Wasted = 0;
+                    prod.Sold = 0;
+                    prod.Bought = 0;
+                    _context.Add(prod);
+                }
+                
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

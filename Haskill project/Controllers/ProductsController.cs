@@ -54,15 +54,50 @@ namespace Haskill_project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ExperationDate,Expired,Quantity,Remaining,FoodId")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,ExperationDate,Quantity,FoodId")] Product product)
         {
+            
             if (ModelState.IsValid)
             {
+                if (product.ExperationDate > DateOnly.FromDateTime(DateTime.Now)) product.Expired = true;
+                else product.Expired = false;
+
+                product.Remaining = product.Quantity;
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
+        }
+
+        
+        public async Task<IActionResult> Sold(Dictionary<string, float> products)
+        {
+            foreach(var prod in products)
+            {
+                float value = prod.Value;
+                while (value > 0)
+                {
+                    int productId = _context.Product.Where(x => x.Remaining > 0).Where(x => x.Expired == false).Where(x => x.Name == prod.Key).OrderBy(x => x.ExperationDate).First().Id;
+                    if (_context.Product.First(m => m.Id == productId).Remaining > value)
+                    {
+                        _context.Product.First(m => m.Id == productId).Remaining -= prod.Value;
+                        value = 0;
+                        break;
+                    }
+                    else
+                    {
+                        float remaining = _context.Product.First(m => m.Id == productId).Remaining;
+                        _context.Product.First(m => m.Id == productId).Remaining = 0;
+                        value -= remaining;
+                    }
+                }
+            }
+
+
+            await _context.SaveChangesAsync();
+            return View(await _context.Food.ToListAsync());
         }
 
         // GET: Products/Edit/5

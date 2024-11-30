@@ -21,8 +21,8 @@ namespace Haskill_project.Data.Migrations
                     ExperationDate = table.Column<DateOnly>(type: "date", nullable: false),
                     Expired = table.Column<bool>(type: "bit", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Remaining = table.Column<int>(type: "int", nullable: false),
-                    FoodId = table.Column<int>(type: "int", nullable: false)
+                    Remaining = table.Column<float>(type: "real", nullable: false),
+                    FoodId = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {

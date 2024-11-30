@@ -8,8 +8,8 @@ namespace Haskill_project.Models
         public string Name { get; set; }
         public DateOnly ExperationDate { get; set; }
         public bool Expired { get; set; }
-        public int Quantity { get; set; }
-        public int Remaining { get; set; }
+        public float Quantity { get; set; }
+        public float Remaining { get; set; }
 
         
         public int FoodId { get; set; }
