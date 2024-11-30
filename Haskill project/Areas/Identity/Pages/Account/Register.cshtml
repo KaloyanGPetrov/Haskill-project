@@ -1,0 +1,36 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1 style="color: #121212; text-align: center; font-family: Arial, sans-serif;">@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4 offset-4" style="border: 2px solid #444; background-color: #1f1f1f; border-radius: 8px; padding: 20px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <hr style="border-top: 1px solid #555;">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com"
+                       style="background-color: #2b2b2b; color: white; border: 1px solid #555;">
+                <label asp-for="Input.Email" style="color: #c9c9c9;">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password"
+                       style="background-color: #2b2b2b; color: white; border: 1px solid #555;">
+                <label asp-for="Input.Password" style="color: #c9c9c9;">Password</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary"
+                    style="background-color: #8773e2; color: white; border: none; border-radius: 5px;">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
