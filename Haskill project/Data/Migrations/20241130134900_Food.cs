@@ -23,7 +23,7 @@ namespace Haskill_project.Data.Migrations
                     Sold = table.Column<int>(type: "int", nullable: false),
                     Wasted = table.Column<int>(type: "int", nullable: false),
                     Bought = table.Column<int>(type: "int", nullable: false),
-                    MonthId = table.Column<int>(type: "int", nullable: false)
+                    MonthId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

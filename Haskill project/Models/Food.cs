@@ -10,7 +10,7 @@
         public int Sold { get; set; }
         public int Wasted { get; set; }
         public int Bought { get; set; }
-        public int MonthId { get; set; }
+        public string Month { get; set; }
 
     }
 }

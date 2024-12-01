@@ -62,7 +62,7 @@ namespace Haskill_project.Controllers
                 List<Food> list = _context.Food.Where(x => x.Quantity > 0).ToList();
                 foreach(var prod in list)
                 {
-                    prod.MonthId = month.Id;
+                    prod.Month = month.Name;
                     prod.Wasted = 0;
                     prod.Sold = 0;
                     prod.Bought = 0;
